@@ -113,13 +113,13 @@ get_json_time(from = "2020-06-01") %>%    ## Step 1: Creat API URL query
   get_data_time()                         ## Step 2: Retrieve data
 ```
 
-For more detailed examples of how to retrieve data via the [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) API version 2, read [Retrieve data via OxCGRT API](https://como-ph.github.io/oxcgrt/articles/retrieve.html).
+For more detailed examples of how to retrieve data via the [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) API version 2, read [Retrieve data via OxCGRT API](https://oxford-ihtm.io/oxcgrt/articles/retrieve.html).
 
 ### The `oxcgrt` calculate workflow
 
 The `calculate_*` functions are based on the [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)'s methodology described [here](https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md). There are two sets of calculate functions included in `oxcgrt`. The first calculates the [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) **sub-indices** and the second calculates the four [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) **indices** which are composed of various combinations of the indicators used by [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) sub-indices and indices.
 
-For more detailed examples of how to calculate the various [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) sub-indices and indices, read [Calculate OxCGRT sub-indices and indices](https://como-ph.github.io/oxcgrt/articles/calculate.html).
+For more detailed examples of how to calculate the various [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) sub-indices and indices, read [Calculate OxCGRT sub-indices and indices](https://oxford-ihtm.io/oxcgrt/articles/calculate.html).
 
 ### Datasets
 
@@ -167,7 +167,7 @@ The `oxcgrt` package author and maintainer commit to ensuring that current funct
 
 The `oxcgrt` package is an independent development and is separate from and not recognised and approved by the [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) team. The author and maintainer of the package is not affiliated with [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) but is committed to ensure fidelity to the methods and usage specified by [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) and accuracy of outputs described and required by [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker).
 
-Any mistakes, problems and issues with the functionality and outputs of the `oxcgrt` including mistakes in interpretation of the calculation of the sub-indices and indices noted (if any) are that of the author and maintainer and not of the [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker). Hence any problems and issues to the usage, functionality and outputs of the `oxcgrt` package should be addressed directly to the author and maintainer [here](https://github.com/como-ph/oxcgrt/issues).
+Any mistakes, problems and issues with the functionality and outputs of the `oxcgrt` including mistakes in interpretation of the calculation of the sub-indices and indices noted (if any) are that of the author and maintainer and not of the [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker). Hence any problems and issues to the usage, functionality and outputs of the `oxcgrt` package should be addressed directly to the author and maintainer [here](https://github.com/OxfordIHTM/oxcgrt/issues).
 
 ## Citation
 
@@ -187,4 +187,4 @@ citation("oxcgrt")
 
 Feedback, bug reports and feature requests are welcome; file issues or seek support [here](https://github.com/OxfordIHTM/oxcgrt/issues). If you would like to contribute to the package, please see our [contributing guidelines](https://oxford-ihtm.io/oxcgrt/CONTRIBUTING.html).
 
-This project is released with a [Contributor Code of Conduct](https://oxford-ihtm/oxcgrt/CODE_OF_CONDUCT.html). By participating in this project you agree to abide by its terms.
+This project is released with a [Contributor Code of Conduct](https://oxford-ihtm.io/oxcgrt/CODE_OF_CONDUCT.html). By participating in this project you agree to abide by its terms.

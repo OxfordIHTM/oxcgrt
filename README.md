@@ -174,7 +174,7 @@ alphabetically by country code:
 For more detailed examples of how to retrieve data via the
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
 API version 2, read [Retrieve data via OxCGRT
-API](https://como-ph.github.io/oxcgrt/articles/retrieve.html).
+API](https://oxford-ihtm.io/oxcgrt/articles/retrieve.html).
 
 ### The `oxcgrt` calculate workflow
 
@@ -195,7 +195,7 @@ sub-indices and indices.
 For more detailed examples of how to calculate the various
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
 sub-indices and indices, read [Calculate OxCGRT sub-indices and
-indices](https://como-ph.github.io/oxcgrt/articles/calculate.html).
+indices](https://oxford-ihtm.io/oxcgrt/articles/calculate.html).
 
 ### Datasets
 
@@ -340,7 +340,7 @@ maintainer and not of the
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker).
 Hence any problems and issues to the usage, functionality and outputs of
 the `oxcgrt` package should be addressed directly to the author and
-maintainer [here](https://github.com/como-ph/oxcgrt/issues).
+maintainer [here](https://github.com/OxfordIHTM/oxcgrt/issues).
 
 ## Citation
 
@@ -387,5 +387,5 @@ would like to contribute to the package, please see our [contributing
 guidelines](https://oxford-ihtm.io/oxcgrt/CONTRIBUTING.html).
 
 This project is released with a [Contributor Code of
-Conduct](https://oxford-ihtm/oxcgrt/CODE_OF_CONDUCT.html). By
+Conduct](https://oxford-ihtm.io/oxcgrt/CODE_OF_CONDUCT.html). By
 participating in this project you agree to abide by its terms.
