@@ -1,4 +1,4 @@
-library(magrittr)
+library(dplyr)
 json_time <- get_json_time(from = "2020-07-18", to = "2020-07-25")
 json_action <- get_json_actions(ccode = "Philippines",
                                 from = "2020-07-18",

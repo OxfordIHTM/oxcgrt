@@ -22,11 +22,10 @@ knitr::opts_chunk$set(
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/oxcgrt)](https://CRAN.R-project.org/package=oxcgrt)
-[![cran checks](https://cranchecks.info/badges/summary/oxcgrt)](https://cran.r-project.org/web/checks/check_results_oxcgrt.html)
 [![CRAN](https://img.shields.io/cran/l/oxcgrt.svg)](https://CRAN.R-project.org/package=oxcgrt)
 [![CRAN](http://cranlogs.r-pkg.org/badges/oxcgrt)](https://CRAN.R-project.org/package=oxcgrt)
 [![CRAN](http://cranlogs.r-pkg.org/badges/grand-total/oxcgrt)](https://CRAN.R-project.org/package=oxcgrt)
-[![R-CMD-check](https://github.com/como-ph/oxcgrt/workflows/R-CMD-check/badge.svg)](https://github.com/como-ph/oxcgrt/actions)
+[![R-CMD-check](https://github.com/OxfordIHTM/oxcgrt/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/OxfordIHTM/oxcgrt/actions/workflows/R-CMD-check.yaml)
 ![test-coverage](https://github.com/como-ph/oxcgrt/workflows/test-coverage/badge.svg)
 [![Codecov test coverage](https://codecov.io/gh/como-ph/oxcgrt/branch/master/graph/badge.svg)](https://codecov.io/gh/como-ph/oxcgrt?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/como-ph/oxcgrt/badge)](https://www.codefactor.io/repository/github/como-ph/oxcgrt)
@@ -186,6 +185,6 @@ citation("oxcgrt")
 
 ## Community guidelines
 
-Feedback, bug reports and feature requests are welcome; file issues or seek support [here](https://github.com/como-ph/oxcgrt/issues). If you would like to contribute to the package, please see our [contributing guidelines](https://como-ph.github.io/oxcgrt/CONTRIBUTING.html).
+Feedback, bug reports and feature requests are welcome; file issues or seek support [here](https://github.com/OxfordIHTM/oxcgrt/issues). If you would like to contribute to the package, please see our [contributing guidelines](https://oxford-ihtm.io/oxcgrt/CONTRIBUTING.html).
 
-This project is released with a [Contributor Code of Conduct](https://como-ph.github.io/oxcgrt/CODE_OF_CONDUCT.html). By participating in this project you agree to abide by its terms.
+This project is released with a [Contributor Code of Conduct](https://oxford-ihtm/oxcgrt/CODE_OF_CONDUCT.html). By participating in this project you agree to abide by its terms.

@@ -30,9 +30,6 @@
 ################################################################################
 
 get_data <- function(json) {
-  ## Check if curl is available
-  requireNamespace("curl", quietly = TRUE)
-
   ## Check if json is a vector
   if (length(json) > 1) {
     json <- json[1]
@@ -106,9 +103,6 @@ get_data <- function(json) {
 ################################################################################
 
 get_data_time <- function(json) {
-  ## Check if curl is available
-  requireNamespace("curl", quietly = TRUE)
-
   ## Check if with internet
   if (!curl::has_internet()) {
     message("No internet connection detected. Data cannot be retrieved.")
@@ -186,9 +180,6 @@ get_data_time <- function(json) {
 ################################################################################
 
 get_data_action <- function(json) {
-  ## Check if curl is available
-  requireNamespace("curl", quietly = TRUE)
-
   ## Check if json is a vector
   if(length(json) > 1) {
     json <- json[1]
@@ -248,9 +239,6 @@ get_data_action <- function(json) {
 ################################################################################
 
 get_data_actions <- function(json) {
-  ## Check if curl is available
-  requireNamespace("curl", quietly = TRUE)
-
   ## Extract data from JSON
   x <- lapply(X = json, FUN = get_data_action) %>%
     dplyr::bind_rows()

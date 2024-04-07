@@ -20,25 +20,22 @@ Imports:
     dplyr,
     jsonlite,
     tibble,
-    magrittr,
     tidyr,
     countrycode,
     stringr,
-    httr
+    httr,
+    curl
 Suggests: 
-    curl,
     covr,
     testthat,
     spelling,
-    rvest,
-    xml2,
     knitr,
     rmarkdown
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
-URL: https://como-ph.github.io/oxcgrt/, https://github.com/como-ph/oxcgrt
-BugReports: https://github.com/como-ph/oxcgrt/issues
+RoxygenNote: 7.3.1
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+URL: https://oxford-ihtm.io/oxcgrt/, https://github.com/OxfordIHTM/oxcgrt
+BugReports: https://github.com/OxfordIHTM/oxcgrt/issues
 VignetteBuilder: knitr

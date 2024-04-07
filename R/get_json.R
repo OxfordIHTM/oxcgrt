@@ -44,12 +44,12 @@ get_json_time <- function(from = "2020-01-02",
   base <- "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range"
 
   ## Check class of from
-  if(class(from) == "Date") {
+  if(inherits(from, "Date")) {
     from <- as.character(from)
   }
 
-  ## Check class of to
-  if(class(to) == "Date") {
+  ## Check class of tof
+  if(inherits(to, "Date")) {
     to <- as.character(to)
   }
 

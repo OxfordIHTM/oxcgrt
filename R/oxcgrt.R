@@ -14,13 +14,13 @@
 #' @keywords internal
 #' @name oxcgrt
 #' @importFrom tibble tibble
-#' @importFrom dplyr bind_rows mutate relocate
+#' @importFrom dplyr bind_rows mutate relocate %>%
 #' @importFrom jsonlite fromJSON
-#' @importFrom magrittr %>%
 #' @importFrom tidyr crossing
 #' @importFrom countrycode countrycode countryname
 #' @importFrom stringr str_extract
 #' @importFrom httr http_error
+#' @importFrom curl has_internet
 #'
 #
 ################################################################################

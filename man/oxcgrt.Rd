@@ -2,8 +2,8 @@
 % Please edit documentation in R/oxcgrt.R
 \docType{package}
 \name{oxcgrt}
-\alias{oxcgrt}
 \alias{oxcgrt-package}
+\alias{oxcgrt}
 \title{An Interface to the Oxford COVID-19 Government Response Tracker API}
 \description{
 The \strong{Oxford COVID-19 Government Response Tracker (OxCGRT)} tracks and
@@ -16,9 +16,9 @@ efficiently for their purposes. This package facilitates access to the
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://como-ph.github.io/oxcgrt/}
-  \item \url{https://github.com/como-ph/oxcgrt}
-  \item Report bugs at \url{https://github.com/como-ph/oxcgrt/issues}
+  \item \url{https://oxford-ihtm.io/oxcgrt/}
+  \item \url{https://github.com/OxfordIHTM/oxcgrt}
+  \item Report bugs at \url{https://github.com/OxfordIHTM/oxcgrt/issues}
 }
 
 }

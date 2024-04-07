@@ -12,12 +12,10 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/oxcgrt)](https://CRAN.R-project.org/package=oxcgrt)
-[![cran
-checks](https://cranchecks.info/badges/summary/oxcgrt)](https://cran.r-project.org/web/checks/check_results_oxcgrt.html)
 [![CRAN](https://img.shields.io/cran/l/oxcgrt.svg)](https://CRAN.R-project.org/package=oxcgrt)
 [![CRAN](http://cranlogs.r-pkg.org/badges/oxcgrt)](https://CRAN.R-project.org/package=oxcgrt)
 [![CRAN](http://cranlogs.r-pkg.org/badges/grand-total/oxcgrt)](https://CRAN.R-project.org/package=oxcgrt)
-[![R-CMD-check](https://github.com/como-ph/oxcgrt/workflows/R-CMD-check/badge.svg)](https://github.com/como-ph/oxcgrt/actions)
+[![R-CMD-check](https://github.com/OxfordIHTM/oxcgrt/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/OxfordIHTM/oxcgrt/actions/workflows/R-CMD-check.yaml)
 ![test-coverage](https://github.com/como-ph/oxcgrt/workflows/test-coverage/badge.svg)
 [![Codecov test
 coverage](https://codecov.io/gh/como-ph/oxcgrt/branch/master/graph/badge.svg)](https://codecov.io/gh/como-ph/oxcgrt?branch=master)
@@ -124,21 +122,22 @@ get_data_time(query)
 
 This results in the following:
 
-    #> # A tibble: 121,674 × 9
-    #>    date_value country_code country_name stringency_actual stringency
-    #>    <date>     <chr>        <chr>                    <dbl>      <dbl>
-    #>  1 2020-06-01 TKM          Turkmenistan              31.5       31.5
-    #>  2 2020-06-01 ROU          Romania                   57.4       57.4
-    #>  3 2020-06-01 BRB          Barbados                  78.7       78.7
-    #>  4 2020-06-01 BGR          Bulgaria                  44.4       44.4
-    #>  5 2020-06-01 LAO          Laos                      43.5       43.5
-    #>  6 2020-06-01 PRI          Puerto Rico               89.8       89.8
-    #>  7 2020-06-01 BHR          Bahrain                   75         75  
-    #>  8 2020-06-01 LUX          Luxembourg                47.2       47.2
-    #>  9 2020-06-01 PAK          Pakistan                  82.4       82.4
-    #> 10 2020-06-01 EGY          Egypt                     84.3       84.3
-    #> # … with 121,664 more rows, and 4 more variables: stringency_legacy <dbl>,
-    #> #   stringency_legacy_disp <dbl>, confirmed <int>, deaths <int>
+    #> # A tibble: 173,696 × 9
+    #>    date_value country_code country_name       confirmed deaths stringency_actual
+    #>    <date>     <chr>        <chr>                  <int>  <int>             <dbl>
+    #>  1 2020-06-01 ABW          Aruba                    101      3              57.4
+    #>  2 2020-06-01 AFG          Afghanistan            15836    269              84.3
+    #>  3 2020-06-01 AGO          Angola                    86      4              77.8
+    #>  4 2020-06-01 ALB          Albania                 1143     33              71.3
+    #>  5 2020-06-01 AND          Andorra                  765     51              42.6
+    #>  6 2020-06-01 ARE          United Arab Emira…     35192    266              72.2
+    #>  7 2020-06-01 ARG          Argentina              17415    556              90.7
+    #>  8 2020-06-01 AUS          Australia               7221    102              62.0
+    #>  9 2020-06-01 AUT          Austria                16642    741              53.7
+    #> 10 2020-06-01 AZE          Azerbaijan              5662     68              75.9
+    #> # ℹ 173,686 more rows
+    #> # ℹ 3 more variables: stringency <dbl>, stringency_legacy <dbl>,
+    #> #   stringency_legacy_disp <dbl>
 
 The `oxcgrt` functions are designed to work with pipe operators via the
 `magrittr` package. The steps shown above can be replicated using pipe
@@ -155,21 +154,22 @@ get_json_time(from = "2020-06-01") %>%    ## Step 1: Creat API URL query
 This results in the same output as the earlier workflow albeit sorted
 alphabetically by country code:
 
-    #> # A tibble: 121,674 × 9
-    #>    date_value country_code country_name stringency_actual stringency
-    #>    <date>     <chr>        <chr>                    <dbl>      <dbl>
-    #>  1 2020-06-01 TKM          Turkmenistan              31.5       31.5
-    #>  2 2020-06-01 ROU          Romania                   57.4       57.4
-    #>  3 2020-06-01 BRB          Barbados                  78.7       78.7
-    #>  4 2020-06-01 BGR          Bulgaria                  44.4       44.4
-    #>  5 2020-06-01 LAO          Laos                      43.5       43.5
-    #>  6 2020-06-01 PRI          Puerto Rico               89.8       89.8
-    #>  7 2020-06-01 BHR          Bahrain                   75         75  
-    #>  8 2020-06-01 LUX          Luxembourg                47.2       47.2
-    #>  9 2020-06-01 PAK          Pakistan                  82.4       82.4
-    #> 10 2020-06-01 EGY          Egypt                     84.3       84.3
-    #> # … with 121,664 more rows, and 4 more variables: stringency_legacy <dbl>,
-    #> #   stringency_legacy_disp <dbl>, confirmed <int>, deaths <int>
+    #> # A tibble: 173,696 × 9
+    #>    date_value country_code country_name       confirmed deaths stringency_actual
+    #>    <date>     <chr>        <chr>                  <int>  <int>             <dbl>
+    #>  1 2020-06-01 ABW          Aruba                    101      3              57.4
+    #>  2 2020-06-01 AFG          Afghanistan            15836    269              84.3
+    #>  3 2020-06-01 AGO          Angola                    86      4              77.8
+    #>  4 2020-06-01 ALB          Albania                 1143     33              71.3
+    #>  5 2020-06-01 AND          Andorra                  765     51              42.6
+    #>  6 2020-06-01 ARE          United Arab Emira…     35192    266              72.2
+    #>  7 2020-06-01 ARG          Argentina              17415    556              90.7
+    #>  8 2020-06-01 AUS          Australia               7221    102              62.0
+    #>  9 2020-06-01 AUT          Austria                16642    741              53.7
+    #> 10 2020-06-01 AZE          Azerbaijan              5662     68              75.9
+    #> # ℹ 173,686 more rows
+    #> # ℹ 3 more variables: stringency <dbl>, stringency_legacy <dbl>,
+    #> #   stringency_legacy_disp <dbl>
 
 For more detailed examples of how to retrieve data via the
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
@@ -225,7 +225,7 @@ codebook
 which outputs the codebook as a singular table in `tbl` format as shown
 below:
 
-    #> # A tibble: 29 × 6
+    #> # A tibble: 47 × 6
     #>    ID    Name                      Description Measurement Coding `Policy Group`
     #>    <chr> <chr>                     <chr>       <chr>       <chr>  <chr>         
     #>  1 C1    C1_School closing         "Record cl… Ordinal sc… 0 - n… Containment a…
@@ -238,7 +238,7 @@ below:
     #>  8 C4    C4_Flag                   ""          Binary fla… 0 - t… Containment a…
     #>  9 C5    C5_Close public transport "Record cl… Ordinal sc… 0 - n… Containment a…
     #> 10 C5    C5_Flag                   ""          Binary fla… 0 - t… Containment a…
-    #> # … with 19 more rows
+    #> # ℹ 37 more rows
 
 The current `oxcgrt` package version includes the
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
@@ -263,7 +263,7 @@ indicatorData
 which outputs the example data as a singular table in `tbl` format as
 shown below:
 
-    #> # A tibble: 14 × 6
+    #> # A tibble: 16 × 6
     #>    indicator value flag_value max_value  flag score
     #>    <chr>     <int>      <int>     <int> <int> <dbl>
     #>  1 C1            2          1         3     1  66.7
@@ -280,6 +280,8 @@ shown below:
     #> 12 H2            3         NA         3     0 100  
     #> 13 H3            2         NA         2     0 100  
     #> 14 H6            2          0         4     1  37.5
+    #> 15 H7            2          1         5     1  40  
+    #> 16 H8            2          1         3     1  66.7
 
 This dataset is used by the `oxcgrt` package to test the `calculate_*`
 functions and for demonstrating how these functions work. This dataset
@@ -360,7 +362,6 @@ call to the `citation` function as follows:
 
 ``` r
 citation("oxcgrt")
-#> 
 #> To cite oxcgrt in publications use:
 #> 
 #>   Ernest Guevarra (2020). oxcgrt: An Interface to the Oxford COVID-19
@@ -381,10 +382,10 @@ citation("oxcgrt")
 ## Community guidelines
 
 Feedback, bug reports and feature requests are welcome; file issues or
-seek support [here](https://github.com/como-ph/oxcgrt/issues). If you
+seek support [here](https://github.com/OxfordIHTM/oxcgrt/issues). If you
 would like to contribute to the package, please see our [contributing
-guidelines](https://como-ph.github.io/oxcgrt/CONTRIBUTING.html).
+guidelines](https://oxford-ihtm.io/oxcgrt/CONTRIBUTING.html).
 
 This project is released with a [Contributor Code of
-Conduct](https://como-ph.github.io/oxcgrt/CODE_OF_CONDUCT.html). By
+Conduct](https://oxford-ihtm/oxcgrt/CODE_OF_CONDUCT.html). By
 participating in this project you agree to abide by its terms.

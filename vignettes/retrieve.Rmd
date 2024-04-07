@@ -16,7 +16,6 @@ knitr::opts_chunk$set(
 
 ```{r setup, echo = FALSE}
 library(oxcgrt)
-library(magrittr)
 ```
 
 The *retrieve data* functions are based on the [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)'s JSON API described [here](https://covidtrackerapi.bsg.ox.ac.uk). Two API endpoints are provided: 1) endpoint for JSON providing data for stringency index by country over time; and, 2) endpoint for JSON providing data on policy actions and stringency index for a specific country on a specific day.
@@ -36,25 +35,25 @@ where `start-date` and `end-date` are the starting date and ending date (both in
 The `oxcgrt` package provides a function named `get_json_time` to interface with the API and retrieve the specified JSON and a function named `get_data_time` to extract the data from the specified JSON into an [R](https://cran.r-project.org) `tibble` object. These two functions have been designed such that they can be piped from one to the other. Hence to retrieve stringency index data for all countries from 1 June 2020 to current date, the following code can be used:
 
 ```{r usage1, echo = TRUE, eval = FALSE}
-get_json_time(from = "2020-06-01") %>% get_data_time()
+get_json_time(from = "2020-06-01") |> get_data_time()
 ```
 
 This produces the following output:
 
 ```{r usage1a, echo = FALSE, eval = TRUE}
-get_json_time(from = "2020-06-01") %>% get_data_time()
+get_json_time(from = "2020-06-01") |> get_data_time()
 ```
 
 Important to note that in `get_json_time`, only the starting date (using the `from` argument) is specified to the desired 1 June 2020 in `YYYY-MM-DD` format. This is because by default the `to` argument (for the ending date) is set to the current date using a call to the `Sys.Date()` function. By default, the `from` argument is set to 2 January 2020 (2020-01-02) which is the earliest available data point for the stringency index. Therefore, to retrieve data on stringency index for all countries for all available time points up to current, the following commands can be issued:
 
 ```{r usage2, echo = TRUE, eval = FALSE}
-get_json_time() %>% get_data_time()
+get_json_time() |> get_data_time()
 ```
 
 which produces the following output:
 
 ```{r usage2a, echo = FALSE, eval = TRUE}
-get_json_time() %>% get_data_time()
+get_json_time() |> get_data_time()
 ```
 
 #### Policy actions and stringency index for specific country on a specific day
@@ -74,7 +73,7 @@ The `oxcgrt` package provides a function named `get_json_actions` to interface w
 ```{r usage3, echo = TRUE, eval = FALSE}
 get_json_actions(ccode = "AFG", 
                  from = NULL, 
-                 to = "2020-06-01") %>% 
+                 to = "2020-06-01") |> 
   get_data()
 ```
 
@@ -83,7 +82,7 @@ which produces the following output:
 ```{r usage3a, echo = FALSE, eval = TRUE}
 get_json_actions(ccode = "AFG", 
                  from = NULL, 
-                 to = "2020-06-01") %>% 
+                 to = "2020-06-01") |> 
   get_data()
 ```
 
@@ -96,7 +95,7 @@ It is also possible to retrieve just policy actions data for a specific country 
 ```{r usage4, echo = TRUE, eval = FALSE}
 get_json_actions(ccode = "AFG", 
                  from = NULL, 
-                 to = "2020-06-01") %>% 
+                 to = "2020-06-01") |> 
   get_data_action()
 ```
 
@@ -105,7 +104,7 @@ This results in:
 ```{r usage4a, echo = FALSE, eval = TRUE}
 get_json_actions(ccode = "AFG", 
                  from = NULL, 
-                 to = "2020-06-01") %>% 
+                 to = "2020-06-01") |> 
   get_data_action()
 ```
 
@@ -116,7 +115,7 @@ To retrieve policy actions data for multiple countries on multiple days, the `ge
 ```{r usage5, echo = TRUE, eval = FALSE}
 get_json_actions(ccode = c("AFG", "Philippines"), 
                  from = "2020-10-25", 
-                 to = "2020-10-31") %>% 
+                 to = "2020-10-31") |> 
   get_data_actions()
 ```
 
@@ -125,7 +124,7 @@ This results in:
 ```{r usage5a, echo = FALSE, eval = TRUE}
 get_json_actions(ccode = c("AFG", "Philippines"), 
                  from = "2020-10-25", 
-                 to = "2020-10-31") %>% 
+                 to = "2020-10-31") |> 
   get_data_actions()
 ```
 

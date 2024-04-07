@@ -19,13 +19,12 @@ knitr::opts_chunk$set(
 
 ```{r setup, echo = FALSE}
 library(oxcgrt)
-library(magrittr)
 ```
 
 The `calculate_*` functions are based on the [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)'s methodology described [here](https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md). There are two sets of calculate functions included in `oxcgrt`. The first calculates the [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) **sub-indices** described in the table below:
 
 ```{r usage6, echo = FALSE, eval = TRUE}
-tab <- codebook[!stringr::str_detect(string = codebook$Name, pattern = "_Flag"), ] %>%
+tab <- codebook[!stringr::str_detect(string = codebook$Name, pattern = "_Flag"), ] |>
   dplyr::mutate(Name = stringr::str_remove_all(string = Name, pattern = "[A-Z]{1}[0-9]{1}\\_"))
 
 knitr::kable(x = tab)
@@ -33,31 +32,27 @@ knitr::kable(x = tab)
 
 The second calculates the four [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) **indices** which are composed of various combinations of the indicators described in the table above. These combinations are described in the table below:
 
-```{r usage7, echo = FALSE, eval = TRUE}
-library(rvest)
-library(xml2)
-
-x <- xml2::read_html("https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md") %>%
-  rvest::html_elements(css = ".markdown-body table") %>%
-  rvest::html_table()
-
-x <- data.frame(t(x[[1]]))
-tab <- x[3:nrow(x), 1:4]
-tab <- data.frame(row.names(tab), tab)
-row.names(tab) <- 1:nrow(tab)
-names(tab) <- c("ID", "Government response index", "Containment and health index",
-                "Stringency index", "Economic support index")
-
-tab <- tab %>%
-  dplyr::mutate(`Government response index` = ifelse(`Government response index` == "'x'", "x", `Government response index`),
-                `Containment and health index` = ifelse(`Containment and health index` == "'x'", "x", `Containment and health index`))
-
-tab <- codebook[!stringr::str_detect(string = codebook$Name, pattern = "_Flag"), c("ID", "Name")] %>%
-  dplyr::mutate(Name = stringr::str_remove_all(string = Name, pattern = "[A-Z]{1}[0-9]{1}\\_")) %>%
-  merge(tab, by = "ID")
-
-knitr::kable(x = tab)
-```
+**ID** | **Name** |	**Government response index** |	**Containment and health index** |	**Stringency index** |	**Economic support index**
+:--- | :---                                  | :---: | :---: | :---: | :---:
+C1   | School closing                        | x     | x     | x     | &nbsp;	
+C2   | Workplace closing                     | x     | x     | x	   |
+C3	 | Cancel public events                  | x     | x     | x     |	
+C4   | Restrictions on gatherings            | x     | x     | x     |	
+C5   | Close public transport                | x     | x     | x     |	
+C6   | Stay at home requirements             | x     | x     | x     |	
+C7   | Restrictions on internal movement     | x     | x     | x     |	
+C8   | International travel controls	       | x     | x     | x     |	
+E1   | Income support (for households)	     | x		 | x     | &nbsp;| 
+E2   | Debt/contract relief (for households) | x		 | x     | &nbsp;|
+E3   | Fiscal measures                       | NA    | NA    | NA    | NA
+E4   | International support                 | NA    | NA    | NA    | NA
+H1   | Public information campaigns          | x     | x     | x     |	
+H2   | Testing policy                        | x	   | x     | &nbsp;|		
+H3   | Contact tracing                       | x	   | x     | &nbsp;|		
+H4   | Emergency investment in healthcare    | NA    | NA    | NA    | NA
+H5   | Investment in vaccines                | NA	   | NA	   | NA    | NA
+H6   | Facial Coverings                      | x     | x     | &nbsp;|		
+M1   | Wildcard                              | NA    | NA    | NA    | NA
 
 ## Calculating OxCGRT sub-indices
 
@@ -83,7 +78,7 @@ To calculate all [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/co
 
 ```{r usage9, echo = TRUE, eval = FALSE}
 ## Given the indicatorData dataset, calculate all sub-indices
-indicatorData %>%
+indicatorData |>
   calculate_subindices(indicator_code = "indicator", 
                        value = "value", 
                        flag_value = "flag_value",
@@ -94,7 +89,7 @@ This results in the following output:
 
 ```{r usage9a, echo = FALSE, eval = TRUE}
 ## Given the indicatorData dataset, calculate all sub-indices
-indicatorData %>%
+indicatorData |>
   calculate_subindices(indicator_code = "indicator", 
                        value = "value", 
                        flag_value = "flag_value",
@@ -108,11 +103,11 @@ It can be noted that the results of the calculations are added to the input data
 The [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) indices can be calculated using the `calculate_index` and `calculate_indices` functions. To calculate a specific sub-index, the following code can be used:
 
 ```{r usage10, echo = TRUE, eval = FALSE}
-indicatorData %>%
+indicatorData |>
   calculate_subindices(indicator_code = "indicator",
                        value = "value",
                        flag_value = "flag_value",
-                       add = FALSE) %>%
+                       add = FALSE) |>
   calculate_index(codes = c(paste("C", 1:8, sep = ""),
                             paste("E", 1:2, sep = ""),
                             paste("H", 1:3, sep = ""),
@@ -123,11 +118,11 @@ indicatorData %>%
 This code calculates the `government response index` which is:
 
 ```{r usage10a, echo = FALSE, eval = TRUE}
-indicatorData %>%
+indicatorData |>
   calculate_subindices(indicator_code = "indicator",
                        value = "value",
                        flag_value = "flag_value",
-                       add = FALSE) %>%
+                       add = FALSE) |>
   calculate_index(codes = c(paste("C", 1:8, sep = ""),
                             paste("E", 1:2, sep = ""),
                             paste("H", 1:3, sep = ""),
@@ -138,44 +133,44 @@ indicatorData %>%
 The same result can be reached by using the specialised function `calculate_gov_response` as follows:
 
 ```{r usage11, echo = TRUE, eval = FALSE}
-indicatorData %>% 
+indicatorData |> 
   calculate_subindices(indicator_code = "indicator",
                        value = "value",
                        flag_value = "flag_value",
-                       add = FALSE) %>%
+                       add = FALSE) |>
   calculate_gov_response()
 ```
 
 which results in the same value as the previous code:
 
 ```{r usage11a, echo = FALSE, eval = TRUE}
-indicatorData %>% 
+indicatorData |> 
   calculate_subindices(indicator_code = "indicator",
                        value = "value",
                        flag_value = "flag_value",
-                       add = FALSE) %>%
+                       add = FALSE) |>
   calculate_gov_response()
 ```
 
 To calculate all four [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker) indices, the following code can be implemented:
 
 ```{r usage12, echo = TRUE, eval = FALSE}
-indicatorData %>% 
+indicatorData |> 
   calculate_subindices(indicator_code = "indicator",
                        value = "value",
                        flag_value = "flag_value",
-                       add = FALSE) %>%
+                       add = FALSE) |>
   calculate_indices()
 ```
 
 which outputs the following results:
 
 ```{r usage12a, echo = FALSE, eval = TRUE}
-indicatorData %>% 
+indicatorData |> 
   calculate_subindices(indicator_code = "indicator",
                        value = "value",
                        flag_value = "flag_value",
-                       add = FALSE) %>%
+                       add = FALSE) |>
   calculate_indices()
 ```
 
