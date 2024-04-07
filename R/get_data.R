@@ -37,49 +37,49 @@ get_data <- function(json) {
             call. = TRUE, immediate. = TRUE)
   }
 
-  ## Check if with internet
+  ## Check if with internet and if API is working ----
   if (!curl::has_internet()) {
     message("No internet connection detected. Data cannot be retrieved.")
     return(NULL)
-  }
-
-  if (httr::http_error(x = json)) {
-    message("JSON data source seems to be broken. Data cannot be retrieved")
-    return(NULL)
-  }
-
-  ## Extract data from JSON
-  x <- jsonlite::fromJSON(txt = json, flatten = TRUE)
-
-  if(stringr::str_detect(string = json, pattern = "[A-Z]{3}")) {
-    ## Convert data.frames in list to tibble
-    x[["policyActions"]] <- tibble::tibble(x[["policyActions"]]) %>%
-      dplyr::mutate(
-        policyvalue = as.integer(policyvalue),
-        notes = as.character(notes)
-      )
-    x[["stringencyData"]] <- dplyr::bind_rows(x[["stringencyData"]])
   } else {
-    ## Convert list to data.frame
-    y <- unlist(x[["data"]], recursive = FALSE)
-    z <- lapply(X = y, FUN = unlist)
-    df <- dplyr::bind_rows(z)
+    if (httr::http_error(x = json)) {
+      message("JSON data source seems to be broken. Data cannot be retrieved")
+      return(NULL)
+    } else {
+      ## Extract data from JSON
+      x <- jsonlite::fromJSON(txt = json, flatten = TRUE)
 
-    ## Convert column classes to appropriate classes
-    x <- df %>%
-      dplyr::mutate(
-        date_value = as.Date(date_value, format = "%Y-%m-%d"),
-        confirmed = as.integer(confirmed),
-        deaths = as.integer(deaths),
-        stringency_actual = as.numeric(stringency_actual),
-        stringency = as.numeric(stringency),
-        stringency_legacy = as.numeric(stringency_legacy),
-        stringency_legacy_disp = as.numeric(stringency_legacy_disp)
-      )
+      if (stringr::str_detect(string = json, pattern = "[A-Z]{3}")) {
+        ## Convert data.frames in list to tibble
+        x[["policyActions"]] <- tibble::tibble(x[["policyActions"]]) |>
+          dplyr::mutate(
+            policyvalue = as.integer(.data$policyvalue),
+            notes = as.character(.data$notes)
+          )
+        x[["stringencyData"]] <- dplyr::bind_rows(x[["stringencyData"]])
+      } else {
+        ## Convert list to data.frame
+        y <- unlist(x[["data"]], recursive = FALSE)
+        z <- lapply(X = y, FUN = unlist)
+        df <- dplyr::bind_rows(z)
+
+        ## Convert column classes to appropriate classes
+        x <- df |>
+          dplyr::mutate(
+            date_value = as.Date(.data$date_value, format = "%Y-%m-%d"),
+            confirmed = as.integer(.data$confirmed),
+            deaths = as.integer(.data$deaths),
+            stringency_actual = as.numeric(.data$stringency_actual),
+            stringency = as.numeric(.data$stringency),
+            stringency_legacy = as.numeric(.data$stringency_legacy),
+            stringency_legacy_disp = as.numeric(.data$stringency_legacy_disp)
+          )
+      }
+
+      ## Return data
+      x
+    }
   }
-
-  ## Return data
-  x
 }
 
 
@@ -107,42 +107,42 @@ get_data_time <- function(json) {
   if (!curl::has_internet()) {
     message("No internet connection detected. Data cannot be retrieved.")
     return(NULL)
+  } else {
+    if (httr::http_error(x = json)) {
+      message("JSON data source seems to be broken. Data cannot be retrieved")
+      return(NULL)
+    } else {
+      ## Extract data from JSON
+      x <- jsonlite::fromJSON(txt = json, flatten = TRUE)
+
+      ## Convert list to data.frame
+      y <- unlist(x[["data"]], recursive = FALSE)
+      z <- lapply(X = y, FUN = unlist)
+      df <- dplyr::bind_rows(z)
+
+      ## Convert column classes to appropriate classes
+      df <- df |>
+        dplyr::mutate(
+          date_value = as.Date(.data$date_value, format = "%Y-%m-%d"),
+          confirmed = as.integer(.data$confirmed),
+          deaths = as.integer(.data$deaths),
+          stringency_actual = as.numeric(.data$stringency_actual),
+          stringency = as.numeric(.data$stringency),
+          stringency_legacy = as.numeric(.data$stringency_legacy),
+          stringency_legacy_disp = as.numeric(.data$stringency_legacy_disp),
+          country_name = countrycode::countrycode(
+            sourcevar = .data$country_code,
+            origin = "iso3c",
+            destination = "country.name",
+            custom_match = c("RKS" = "Kosovo")
+          )
+        ) |>
+        dplyr::relocate(.data$country_name, .after = .data$country_code)
+
+      ## Return data
+      df
+    }
   }
-
-  if (httr::http_error(x = json)) {
-    message("JSON data source seems to be broken. Data cannot be retrieved")
-    return(NULL)
-  }
-
-  ## Extract data from JSON
-  x <- jsonlite::fromJSON(txt = json, flatten = TRUE)
-
-  ## Convert list to data.frame
-  y <- unlist(x[["data"]], recursive = FALSE)
-  z <- lapply(X = y, FUN = unlist)
-  df <- dplyr::bind_rows(z)
-
-  ## Convert column classes to appropriate classes
-  df <- df %>%
-    dplyr::mutate(
-      date_value = as.Date(date_value, format = "%Y-%m-%d"),
-      confirmed = as.integer(confirmed),
-      deaths = as.integer(deaths),
-      stringency_actual = as.numeric(stringency_actual),
-      stringency = as.numeric(stringency),
-      stringency_legacy = as.numeric(stringency_legacy),
-      stringency_legacy_disp = as.numeric(stringency_legacy_disp),
-      country_name = countrycode::countrycode(
-        sourcevar = country_code,
-        origin = "iso3c",
-        destination = "country.name",
-        custom_match = c("RKS" = "Kosovo")
-      )
-    ) %>%
-    dplyr::relocate(country_name, .after = country_code)
-
-  ## Return data
-  df
 }
 
 
@@ -191,41 +191,41 @@ get_data_action <- function(json) {
   if (!curl::has_internet()) {
     message("No internet connection detected. Data cannot be retrieved.")
     return(NULL)
+  } else {
+    if (httr::http_error(x = json)) {
+      message("JSON data source seems to be broken. Data cannot be retrieved")
+      return(NULL)
+    } else {
+      ## Extract data from JSON
+      x <- jsonlite::fromJSON(txt = json, flatten = TRUE)[["policyActions"]]
+
+      ## Tidy up policyActions data.frame and convert to tibble
+      x <- x |>
+        dplyr::mutate(
+          policyvalue = ifelse(.data$policyvalue == "NA", NA, .data$policyvalue),
+          policyvalue = as.integer(.data$policyvalue),
+          notes = as.character(.data$notes),
+          date_value = stringr::str_extract(
+            json, pattern = "[0-9]{4}\\-[0-9]{2}\\-[0-9]{2}"
+          ),
+          date_value = as.Date(.data$date_value, format = "%Y-%m-%d"),
+          country_code = stringr::str_extract(json, pattern = "[A-Z]{3}"),
+          country_name = countrycode::countrycode(
+            sourcevar = .data$country_code,
+            origin = "iso3c",
+            destination = "country.name",
+            custom_match = c("RKS" = "Kosovo")
+          )
+        ) |>
+        dplyr::relocate(.data$country_name, .before = .data$policy_type_code) |>
+        dplyr::relocate(.data$country_code, .before = .data$country_name) |>
+        dplyr::relocate(.data$date_value, .before = .data$country_code) |>
+        tibble::tibble()
+
+      ## Return data
+      x
+    }
   }
-
-  if (httr::http_error(x = json)) {
-    message("JSON data source seems to be broken. Data cannot be retrieved")
-    return(NULL)
-  }
-
-  ## Extract data from JSON
-  x <- jsonlite::fromJSON(txt = json, flatten = TRUE)[["policyActions"]]
-
-  ## Tidy up policyActions data.frame and convert to tibble
-  x <- x %>%
-    dplyr::mutate(
-      policyvalue = ifelse(policyvalue == "NA", NA, policyvalue),
-      policyvalue = as.integer(policyvalue),
-      notes = as.character(notes),
-      date_value = stringr::str_extract(
-        json, pattern = "[0-9]{4}\\-[0-9]{2}\\-[0-9]{2}"
-      ),
-      date_value = as.Date(date_value, format = "%Y-%m-%d"),
-      country_code = stringr::str_extract(json, pattern = "[A-Z]{3}"),
-      country_name = countrycode::countrycode(
-        sourcevar = country_code,
-        origin = "iso3c",
-        destination = "country.name",
-        custom_match = c("RKS" = "Kosovo")
-      )
-    ) %>%
-    dplyr::relocate(country_name, .before = policy_type_code) %>%
-    dplyr::relocate(country_code, .before = country_name) %>%
-    dplyr::relocate(date_value, .before = country_code) %>%
-    tibble::tibble()
-
-  ## Return data
-  x
 }
 
 
@@ -240,7 +240,7 @@ get_data_action <- function(json) {
 
 get_data_actions <- function(json) {
   ## Extract data from JSON
-  x <- lapply(X = json, FUN = get_data_action) %>%
+  x <- lapply(X = json, FUN = get_data_action) |>
     dplyr::bind_rows()
 
   ## Return data

@@ -16,10 +16,10 @@ status](https://www.r-pkg.org/badges/version/oxcgrt)](https://CRAN.R-project.org
 [![CRAN](http://cranlogs.r-pkg.org/badges/oxcgrt)](https://CRAN.R-project.org/package=oxcgrt)
 [![CRAN](http://cranlogs.r-pkg.org/badges/grand-total/oxcgrt)](https://CRAN.R-project.org/package=oxcgrt)
 [![R-CMD-check](https://github.com/OxfordIHTM/oxcgrt/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/OxfordIHTM/oxcgrt/actions/workflows/R-CMD-check.yaml)
-![test-coverage](https://github.com/como-ph/oxcgrt/workflows/test-coverage/badge.svg)
+![test-coverage](https://github.com/OxfordIHTM/oxcgrt/workflows/test-coverage/badge.svg)
 [![Codecov test
-coverage](https://codecov.io/gh/como-ph/oxcgrt/branch/master/graph/badge.svg)](https://codecov.io/gh/como-ph/oxcgrt?branch=master)
-[![CodeFactor](https://www.codefactor.io/repository/github/como-ph/oxcgrt/badge)](https://www.codefactor.io/repository/github/como-ph/oxcgrt)
+coverage](https://codecov.io/gh/OxfordIHTM/oxcgrt/branch/master/graph/badge.svg)](https://codecov.io/gh/OxfordIHTM/oxcgrt?branch=main)
+[![CodeFactor](https://www.codefactor.io/repository/github/OxfordIHTM/oxcgrt/badge)](https://www.codefactor.io/repository/github/OxfordIHTM/oxcgrt)
 [![DOI](https://zenodo.org/badge/276819663.svg)](https://zenodo.org/badge/latestdoi/276819663)
 <!-- badges: end -->
 
@@ -364,18 +364,20 @@ call to the `citation` function as follows:
 citation("oxcgrt")
 #> To cite oxcgrt in publications use:
 #> 
-#>   Ernest Guevarra (2020). oxcgrt: An Interface to the Oxford COVID-19
-#>   Government Response Tracker API. R package version 0.1.0. URL
-#>   https://como-ph.github.io/oxcgrt/
+#>   Guevarra E (2024). _oxcgrt: An Interface to the Oxford COVID-19
+#>   Government Response Tracker API_. doi:10.5281/zenodo.4293648
+#>   <https://doi.org/10.5281/zenodo.4293648>, R package version 0.2.0,
+#>   <https://oxford-ihtm.io/oxcgrt/>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
 #>     title = {oxcgrt: An Interface to the Oxford COVID-19 Government Response Tracker API},
 #>     author = {Ernest Guevarra},
-#>     year = {2020},
-#>     note = {R package version 0.1.0},
-#>     url = {https://como-ph.github.io/oxcgrt/},
+#>     year = {2024},
+#>     note = {R package version 0.2.0},
+#>     url = {https://oxford-ihtm.io/oxcgrt/},
+#>     doi = {10.5281/zenodo.4293648},
 #>   }
 ```
 

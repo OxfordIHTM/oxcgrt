@@ -26,9 +26,9 @@ knitr::opts_chunk$set(
 [![CRAN](http://cranlogs.r-pkg.org/badges/oxcgrt)](https://CRAN.R-project.org/package=oxcgrt)
 [![CRAN](http://cranlogs.r-pkg.org/badges/grand-total/oxcgrt)](https://CRAN.R-project.org/package=oxcgrt)
 [![R-CMD-check](https://github.com/OxfordIHTM/oxcgrt/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/OxfordIHTM/oxcgrt/actions/workflows/R-CMD-check.yaml)
-![test-coverage](https://github.com/como-ph/oxcgrt/workflows/test-coverage/badge.svg)
-[![Codecov test coverage](https://codecov.io/gh/como-ph/oxcgrt/branch/master/graph/badge.svg)](https://codecov.io/gh/como-ph/oxcgrt?branch=master)
-[![CodeFactor](https://www.codefactor.io/repository/github/como-ph/oxcgrt/badge)](https://www.codefactor.io/repository/github/como-ph/oxcgrt)
+![test-coverage](https://github.com/OxfordIHTM/oxcgrt/workflows/test-coverage/badge.svg)
+[![Codecov test coverage](https://codecov.io/gh/OxfordIHTM/oxcgrt/branch/master/graph/badge.svg)](https://codecov.io/gh/OxfordIHTM/oxcgrt?branch=main)
+[![CodeFactor](https://www.codefactor.io/repository/github/OxfordIHTM/oxcgrt/badge)](https://www.codefactor.io/repository/github/OxfordIHTM/oxcgrt)
 [![DOI](https://zenodo.org/badge/276819663.svg)](https://zenodo.org/badge/latestdoi/276819663)
 <!-- badges: end -->
 

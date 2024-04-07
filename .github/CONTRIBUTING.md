@@ -2,7 +2,7 @@
 
 ## Bugs
 
-* Submit an issue on the [issues page](https://github.com/como-ph/oxcgrt/issues)
+* Submit an issue on the [issues page](https://github.com/OxfordIHTM/oxcgrt/issues)
 
 ## Code contributions
 
@@ -15,10 +15,10 @@ git clone https://github.com/<yourgithubusername>/oxcgrt.git
 ```
 
 * Make sure to track progress upstream i.e., on our version of `oxcgrt` 
-at `oxcgrt/covidphdata`, by doing 
+at `OxfordIHTM/oxcgrt`, by doing 
 
 ```
-git remote add upstream https://github.com/como-ph/oxcgrt.git
+git remote add upstream https://github.com/OxfordIHTM/oxcgrt.git
 ```
 
 * Before making changes make sure to pull changes in from `upstream` by doing 
