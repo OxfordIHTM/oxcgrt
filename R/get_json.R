@@ -122,7 +122,7 @@ get_json_actions <- function(ccode,
   on <- as.character(on)
 
   ## Create query
-  query <- tidyr::crossing(country, on) %>%
+  query <- tidyr::crossing(country, on) |>
     apply(MARGIN = 1, FUN = paste, collapse = "/")
 
   ## Construct API query to retrieve JSON

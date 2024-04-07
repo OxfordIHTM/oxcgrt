@@ -1,17 +1,12 @@
-# oxcgrt 0.2.0
+# oxcgrt 0.2.0.
 
 ## Fix bugs
 
 * Addressed CRAN errors resulting when internet not available by checking
 internet availability when accessing JSON endpoint
 
-## Updates
-
-* Updated index calculations to include vaccination information
-
-* Updated codebook and sample indicator data to include vaccination information
-
-* Updated README to reflect inclusion of vaccination information
+* Addressed CRAN errors resulting when API is down or not accessible by
+checking whether JSON endpoint errors before attempting data retrieval
 
 
 # oxcgrt 0.1.0

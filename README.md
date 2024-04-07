@@ -364,18 +364,20 @@ call to the `citation` function as follows:
 citation("oxcgrt")
 #> To cite oxcgrt in publications use:
 #> 
-#>   Ernest Guevarra (2020). oxcgrt: An Interface to the Oxford COVID-19
-#>   Government Response Tracker API. R package version 0.1.0. URL
-#>   https://como-ph.github.io/oxcgrt/
+#>   Guevarra E (2024). _oxcgrt: An Interface to the Oxford COVID-19
+#>   Government Response Tracker API_. doi:10.5281/zenodo.4293648
+#>   <https://doi.org/10.5281/zenodo.4293648>, R package version 0.2.0,
+#>   <https://oxford-ihtm.io/oxcgrt/>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
 #>     title = {oxcgrt: An Interface to the Oxford COVID-19 Government Response Tracker API},
 #>     author = {Ernest Guevarra},
-#>     year = {2020},
-#>     note = {R package version 0.1.0},
-#>     url = {https://como-ph.github.io/oxcgrt/},
+#>     year = {2024},
+#>     note = {R package version 0.2.0},
+#>     url = {https://oxford-ihtm.io/oxcgrt/},
+#>     doi = {10.5281/zenodo.4293648},
 #>   }
 ```
 
