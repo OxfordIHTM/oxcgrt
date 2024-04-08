@@ -277,3 +277,7 @@ get_data_actions <- function(json) {
 }
 
 
+get_data_legacy1 <- function() {
+  url_link <- https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker-legacy/main/legacy_data_20200425/OxCGRT_20200425%20LEGACY.csv
+}
+

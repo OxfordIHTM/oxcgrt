@@ -5,6 +5,5 @@ bibentry(
   author  = as.person("Ernest Guevarra"),
   year    = "2024",
   note    = "R package version 0.2.0",
-  url     = "https://oxford-ihtm.io/oxcgrt/",
-  doi     = "10.5281/zenodo.4293648"
+  url     = "https://oxford-ihtm.io/oxcgrt/"
 )

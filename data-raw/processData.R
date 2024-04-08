@@ -1,13 +1,28 @@
 ## Libraries
-library(xml)
+library(xml2)
 library(dplyr)
 library(rvest)
 library(stringr)
 library(tibble)
+library(gh)
 
 ## Codebook
+
+json <- gh::gh(
+  endpoint = "GET /repos/{owner}/{repo}/contents/{path}",
+  owner = "OxCGRT",
+  repo = "covid-policy-tracker",
+  path = "documentation/codebook.md"
+)
+
+readLines(con = file_path)
+
+rvest::session("https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/codebook.md") %>%
+  rvest::html_elements(css = ".js-snippet-clipboard-copy-unpositioned") |>
+  rvest::html_table()
+
 codebook <- xml2::read_html("https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/codebook.md") %>%
-  rvest::html_nodes(css = ".markdown-body table") %>%
+  rvest::html_nodes(css = ".container-lg table") %>%
   rvest::html_table() %>%
   dplyr::bind_rows() %>%
   dplyr::mutate(`Policy Group` = c(rep("Containment and closure policies", 15),
@@ -45,4 +60,63 @@ indicatorData <- indicatorData %>%
 usethis::use_data(indicatorData, overwrite = TRUE, compress = "xz")
 
 
+## Table of links to download various data versions
 
+### Get contents of legacy repository ----
+legacy_files <- gh::gh(
+  endpoint = "GET /repos/{owner}/{repo}/git/trees/{tree_sha}?{query}",
+  owner = "OxCGRT",
+  repo = "covid-policy-tracker-legacy",
+  tree_sha = "main",
+  query = "recursive=true"
+) |>
+  jsonlite::toJSON() |>
+  jsonlite::fromJSON() |>
+  (\(x) x$tree)() |>
+  tidyr::unnest(cols = c(path, mode, type, sha, url, size)) |>
+  dplyr::filter(
+    type == "blob",
+    stringr::str_detect(path, ".csv|.xlsx")
+  ) |>
+  dplyr::mutate(
+    version = ifelse(
+      stringr::str_detect(string = path, pattern = "legacy_data_20200425"),
+      "v1", "v2"
+    ),
+    filename = basename(path),
+    url_raw = file.path(
+      "https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker-legacy/main",
+      path
+    )
+  ) |>
+  dplyr::select(version, filename, path, url, url_raw, sha)
+
+### Get contents of current repository ----
+current_files <- gh::gh(
+  endpoint = "GET /repos/{owner}/{repo}/git/trees/{tree_sha}?{query}",
+  owner = "OxCGRT",
+  repo = "covid-policy-dataset",
+  tree_sha = "main",
+  query = "recursive=true"
+) |>
+  jsonlite::toJSON() |>
+  jsonlite::fromJSON() |>
+  (\(x) x$tree)() |>
+  tidyr::unnest(cols = c(path, mode, type, sha, url, size)) |>
+  dplyr::filter(
+    type == "blob",
+    stringr::str_detect(path, ".csv|.xlsx")
+  ) |>
+  dplyr::mutate(
+    version = "final",
+    filename = basename(path),
+    url_raw = file.path(
+      "https://raw.githubusercontent.com/OxCGRT/covid-policy-dataset/main",
+      path
+    )
+  ) |>
+  dplyr::select(version, filename, path, url, url_raw, sha)
+
+oxcgrt_data_files <- rbind(legacy_files, current_files)
+
+usethis::use_data(oxcgrt_data_files, overwrite = TRUE, compress = "xz")

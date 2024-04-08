@@ -44,3 +44,19 @@
 "indicatorData"
 
 
+#'
+#' Table of OxCGRT dataset files available from OxCGRT GitHub data repositories
+#'
+#' @format A tibble with 90 rows and 6 columns
+#'
+#' | **Variable** | **Description** |
+#' | :--- | :--- |
+#' | `version` | OxCGRT dataset version. Either **v1**, **v2**, or **final**
+#' | `filename` | Filename of dataset file
+#' | `path` | Path of dataset file
+#' | `url` | GitHub URL to dataset file
+#' | `url_raw` | GitHub raw URL to dataset file
+#' | `sha` | SHA-1 hash value for dataset file
+#'
+"oxcgrt_dataset_files"
+
