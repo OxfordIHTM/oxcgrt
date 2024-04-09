@@ -1,5 +1,3 @@
-################################################################################
-#
 #'
 #' An Interface to the Oxford COVID-19 Government Response Tracker API
 #'
@@ -14,23 +12,16 @@
 #' @keywords internal
 #' @name oxcgrt
 #' @importFrom tibble tibble
-#' @importFrom dplyr bind_rows mutate relocate
+#' @importFrom dplyr bind_rows mutate relocate matches pull filter last_col
 #' @importFrom jsonlite fromJSON
-#' @importFrom tidyr crossing
+#' @importFrom tidyr crossing pivot_longer
 #' @importFrom countrycode countrycode countryname
-#' @importFrom stringr str_extract
+#' @importFrom stringr str_extract str_detect str_remove_all
 #' @importFrom httr http_error
 #' @importFrom curl has_internet
 #' @importFrom rlang .data
+#' @importFrom readr read_csv
+#' @importFrom utils download.file
 #'
-#
-################################################################################
 "_PACKAGE"
 
-## quiets concerns of R CMD check
-# if(getRversion() >= "2.15.1") {
-#   utils::globalVariables(c("policyvalue", "notes", "date_value", "confirmed",
-#                            "deaths", "stringency_actual", "stringency",
-#                            "stringency_legacy", "stringency_legacy_disp",
-#                            "country_code", "country_name", "policy_type_code"))
-# }

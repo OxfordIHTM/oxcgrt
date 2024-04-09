@@ -1,5 +1,3 @@
-################################################################################
-#
 #'
 #' Codebook for the Oxford COVID-19 Government Response Tracker
 #'
@@ -16,13 +14,9 @@
 #'
 #' @source https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/codebook.md
 #'
-#
-################################################################################
 "codebook"
 
 
-################################################################################
-#
 #'
 #' Example indicator data for sub-index calculations
 #'
@@ -39,8 +33,6 @@
 #'
 #' @source https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md
 #'
-#
-################################################################################
 "indicatorData"
 
 
@@ -58,5 +50,5 @@
 #' | `url_raw` | GitHub raw URL to dataset file
 #' | `sha` | SHA-1 hash value for dataset file
 #'
-"oxcgrt_dataset_files"
+"oxcgrt_data_files"
 

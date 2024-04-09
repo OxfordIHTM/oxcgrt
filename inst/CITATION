@@ -4,6 +4,6 @@ bibentry(
   title   = "oxcgrt: An Interface to the Oxford COVID-19 Government Response Tracker API",
   author  = as.person("Ernest Guevarra"),
   year    = "2024",
-  note    = "R package version 0.2.0",
+  note    = "R package version 0.2.0.9000",
   url     = "https://oxford-ihtm.io/oxcgrt/"
 )

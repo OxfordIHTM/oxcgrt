@@ -32,7 +32,7 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 
-The [Oxford COVID-19 Government Response Tracker (OxCGRT)](https://www.bsg.ox.ac.uk/research/covid-19-government-response-tracker) is a project that gathered data on government measures taken to address COVID-19 from 2020 to 2023 rigourously and consistently. It involved over 1500 volunteers and provided real-time information on various policy responses worldwide up to 2022. As of May 2023, most countries had lifted their pandemic-related policies, prompting the project to shift its focus to analyzing the collected data and conducting research on the impacts and determinants of these responses.
+The [Oxford COVID-19 Government Response Tracker (OxCGRT)](https://www.bsg.ox.ac.uk/research/covid-19-government-response-tracker) is a project that gathered data on government measures taken to address COVID-19 from 2020 to 2023 rigorously and consistently. It involved over 1500 volunteers and provided real-time information on various policy responses worldwide up to 2022. As of May 2023, most countries had lifted their pandemic-related policies, prompting the project to shift its focus to analysing the collected data and conducting research on the impacts and determinants of these responses.
 
 ## The OxCGRT data
 
@@ -47,7 +47,7 @@ The legacy version 1 dataset was in place before 25 April 2020. The datasets hav
 
 The legacy version 1 dataset produced the first version (or legacy version) of the *stringency index*. The methodology used to calculate the *legacy stringency index* is found [here](https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md#april-2020-legacy-stringency-index).
 
-The legacy version 1 dataset is currently available from [OxCGRT's legecy GitHub repository](https://github.com/OxCGRT/covid-policy-tracker-legacy) at this [directory](https://github.com/OxCGRT/covid-policy-tracker-legacy/blob/main/legacy_data_20200425). The legacy version 1 dataset was also briefly available via and application programming interface (API) but was immediately superseded by a second version when legacy version 2 of the dataset was initiated (see next section).
+The legacy version 1 dataset is currently available from [OxCGRT's legacy GitHub repository](https://github.com/OxCGRT/covid-policy-tracker-legacy) at this [directory](https://github.com/OxCGRT/covid-policy-tracker-legacy/blob/main/legacy_data_20200425). The legacy version 1 dataset was also briefly available via and application programming interface (API) but was immediately superseded by a second version when legacy version 2 of the dataset was initiated (see next section).
 
 ### Legacy version 2
 
