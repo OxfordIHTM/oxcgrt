@@ -52,6 +52,7 @@ reference:
     - get_data
     - get_data_time
     - starts_with("get_data_action")
+    - get_data_v1
 
   - title: Calculate
     contents:
@@ -67,3 +68,4 @@ reference:
     contents:
     - codebook
     - indicatorData
+    - oxcgrt_data_files

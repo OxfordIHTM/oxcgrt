@@ -50,11 +50,11 @@ Important to note that in `get_json_time`, only the starting date (using the `fr
 get_json_time() |> get_data_time()
 ```
 
-which produces the following output:
+<!-- which produces the following output: -->
 
-```{r usage2a, echo = FALSE, eval = TRUE}
-get_json_time() |> get_data_time()
-```
+<!-- ```{r usage2a, echo = FALSE, eval = TRUE} -->
+<!-- get_json_time() |> get_data_time() -->
+<!-- ``` -->
 
 #### Policy actions and stringency index for specific country on a specific day
 
