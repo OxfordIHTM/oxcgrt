@@ -24,12 +24,12 @@ status](https://www.r-pkg.org/badges/version/oxcgrt)](https://CRAN.R-project.org
 The [Oxford COVID-19 Government Response Tracker
 (OxCGRT)](https://www.bsg.ox.ac.uk/research/covid-19-government-response-tracker)
 is a project that gathered data on government measures taken to address
-COVID-19 from 2020 to 2023 rigourously and consistently. It involved
-over 1500 volunteers and provided real-time information on various
-policy responses worldwide up to 2022. As of May 2023, most countries
-had lifted their pandemic-related policies, prompting the project to
-shift its focus to analyzing the collected data and conducting research
-on the impacts and determinants of these responses.
+COVID-19 from 2020 to 2023 rigorously and consistently. It involved over
+1500 volunteers and provided real-time information on various policy
+responses worldwide up to 2022. As of May 2023, most countries had
+lifted their pandemic-related policies, prompting the project to shift
+its focus to analysing the collected data and conducting research on the
+impacts and determinants of these responses.
 
 ## The OxCGRT data
 
@@ -42,7 +42,9 @@ OxCGRT research team have developed and employed.
 
 ### Legacy version 1
 
-**Start date:** March 2020 **Retirement date:** 25 April 2020
+**Start date:** March 2020
+
+**Retirement date:** 25 April 2020
 
 The legacy version 1 dataset was in place before 25 April 2020. The
 datasets have the 13 *‘S’* indicators that the OxCGRT used in the months
@@ -63,7 +65,7 @@ the *legacy stringency index* is found
 [here](https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md#april-2020-legacy-stringency-index).
 
 The legacy version 1 dataset is currently available from [OxCGRT’s
-legecy GitHub
+legacy GitHub
 repository](https://github.com/OxCGRT/covid-policy-tracker-legacy) at
 this
 [directory](https://github.com/OxCGRT/covid-policy-tracker-legacy/blob/main/legacy_data_20200425).
@@ -74,7 +76,9 @@ by a second version when legacy version 2 of the dataset was initiated
 
 ### Legacy version 2
 
-**Start date:** 28 April 2020 **~Retirement date:** 27 July 2022
+**Start date:** 28 April 2020
+
+**Retirement date:** 27 July 2022
 
 OxCGRT expanded to 21 indicators of government response. Full
 descriptions of the policy indicators and their meaning can be found
@@ -94,7 +98,7 @@ described
 and the calculation defined
 [here](https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md#index-calculation).
 
-The OxCGRT lecacy version 2 datasets is currently available from
+The OxCGRT legacy version 2 datasets is currently available from
 [OxCGRT’s legacy GitHub
 repository](https://github.com/OxCGRT/covid-policy-tracker-legacy) at
 this
@@ -107,7 +111,9 @@ accessible.
 
 ### Current and final dataset
 
-**Start date:** July 2022 **Date of final release:** June 2023
+**Start date:** July 2022
+
+**Date of final release:** June 2023
 
 From the end of July 2022, the data structure was again evolved to take
 into account the need to differentiate policies applying to vaccinated
@@ -170,9 +176,8 @@ remotes::install_github("OxfordIHTM/oxcgrt")
 
 ### The `oxcgrt` data retrieval workflow via API
 
-The *retrieve data* functions are based on the
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)’s
-JSON API described [here](https://covidtrackerapi.bsg.ox.ac.uk). Two API
+The *retrieve data* functions are based on the OxCGRT’s JSON API
+described [here](https://covidtrackerapi.bsg.ox.ac.uk). Two API
 endpoints are provided: 1) endpoint for JSON providing data for
 stringency index by country over time; and, 2) endpoint for JSON
 providing data on policy actions and stringency index for a specific
@@ -188,8 +193,8 @@ data.frame structure usable in R. This workflow is show in code below:
 library(oxcgrt)
 
 ## Step 1: Create the appropriate API URL query for time series data from 
-## 1 June 2020 up to current day
-query <- get_json_time(from = "2020-06-01")
+## 1 December 2022 up to current day
+query <- get_json_time(from = "2022-12-01")
 
 ## Step 2: Retrieve the data
 get_data_time(query)
@@ -197,100 +202,81 @@ get_data_time(query)
 
 This results in the following:
 
-    #> # A tibble: 173,696 × 9
+    #> # A tibble: 5,704 × 9
     #>    date_value country_code country_name       confirmed deaths stringency_actual
     #>    <date>     <chr>        <chr>                  <int>  <int>             <dbl>
-    #>  1 2020-06-01 ABW          Aruba                    101      3              57.4
-    #>  2 2020-06-01 AFG          Afghanistan            15836    269              84.3
-    #>  3 2020-06-01 AGO          Angola                    86      4              77.8
-    #>  4 2020-06-01 ALB          Albania                 1143     33              71.3
-    #>  5 2020-06-01 AND          Andorra                  765     51              42.6
-    #>  6 2020-06-01 ARE          United Arab Emira…     35192    266              72.2
-    #>  7 2020-06-01 ARG          Argentina              17415    556              90.7
-    #>  8 2020-06-01 AUS          Australia               7221    102              62.0
-    #>  9 2020-06-01 AUT          Austria                16642    741              53.7
-    #> 10 2020-06-01 AZE          Azerbaijan              5662     68              75.9
-    #> # ℹ 173,686 more rows
+    #>  1 2022-12-01 ABW          Aruba                  43641    236             25.9 
+    #>  2 2022-12-01 AFG          Afghanistan           206073   7834              2.78
+    #>  3 2022-12-01 AGO          Angola                104676   1924             18.5 
+    #>  4 2022-12-01 ALB          Albania               333360   3594             11.1 
+    #>  5 2022-12-01 AND          Andorra                47219    157             11.1 
+    #>  6 2022-12-01 ARE          United Arab Emira…   1044468   2348             13.9 
+    #>  7 2022-12-01 ARG          Argentina            9727247 130025             25   
+    #>  8 2022-12-01 AUS          Australia           10742127  16203             11.1 
+    #>  9 2022-12-01 AUT          Austria              5566947  21216             35.2 
+    #> 10 2022-12-01 AZE          Azerbaijan            824385   9981             45.4 
+    #> # ℹ 5,694 more rows
     #> # ℹ 3 more variables: stringency <dbl>, stringency_legacy <dbl>,
     #> #   stringency_legacy_disp <dbl>
 
-The `oxcgrt` functions are designed to work with pipe operators via the
-`magrittr` package. The steps shown above can be replicated using pipe
-operators as follows:
+The `oxcgrt` functions are designed to work with pipe operators. The
+steps shown above can be replicated using pipe operators as follows:
 
 ``` r
-## Load magrittr package
-library(magrittr)
-
-get_json_time(from = "2020-06-01") %>%    ## Step 1: Creat API URL query
+get_json_time(from = "2022-12-01") |>     ## Step 1: Creat API URL query
   get_data_time()                         ## Step 2: Retrieve data
 ```
 
 This results in the same output as the earlier workflow albeit sorted
 alphabetically by country code:
 
-    #> # A tibble: 173,696 × 9
+    #> # A tibble: 5,704 × 9
     #>    date_value country_code country_name       confirmed deaths stringency_actual
     #>    <date>     <chr>        <chr>                  <int>  <int>             <dbl>
-    #>  1 2020-06-01 ABW          Aruba                    101      3              57.4
-    #>  2 2020-06-01 AFG          Afghanistan            15836    269              84.3
-    #>  3 2020-06-01 AGO          Angola                    86      4              77.8
-    #>  4 2020-06-01 ALB          Albania                 1143     33              71.3
-    #>  5 2020-06-01 AND          Andorra                  765     51              42.6
-    #>  6 2020-06-01 ARE          United Arab Emira…     35192    266              72.2
-    #>  7 2020-06-01 ARG          Argentina              17415    556              90.7
-    #>  8 2020-06-01 AUS          Australia               7221    102              62.0
-    #>  9 2020-06-01 AUT          Austria                16642    741              53.7
-    #> 10 2020-06-01 AZE          Azerbaijan              5662     68              75.9
-    #> # ℹ 173,686 more rows
+    #>  1 2022-12-01 ABW          Aruba                  43641    236             25.9 
+    #>  2 2022-12-01 AFG          Afghanistan           206073   7834              2.78
+    #>  3 2022-12-01 AGO          Angola                104676   1924             18.5 
+    #>  4 2022-12-01 ALB          Albania               333360   3594             11.1 
+    #>  5 2022-12-01 AND          Andorra                47219    157             11.1 
+    #>  6 2022-12-01 ARE          United Arab Emira…   1044468   2348             13.9 
+    #>  7 2022-12-01 ARG          Argentina            9727247 130025             25   
+    #>  8 2022-12-01 AUS          Australia           10742127  16203             11.1 
+    #>  9 2022-12-01 AUT          Austria              5566947  21216             35.2 
+    #> 10 2022-12-01 AZE          Azerbaijan            824385   9981             45.4 
+    #> # ℹ 5,694 more rows
     #> # ℹ 3 more variables: stringency <dbl>, stringency_legacy <dbl>,
     #> #   stringency_legacy_disp <dbl>
 
-For more detailed examples of how to retrieve data via the
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-API version 2, read [Retrieve data via OxCGRT
+For more detailed examples of how to retrieve data via the OxCGRT API
+version 2, read [Retrieve data via OxCGRT
 API](https://oxford-ihtm.io/oxcgrt/articles/retrieve.html).
 
 ### The `oxcgrt` calculate workflow
 
-The `calculate_*` functions are based on the
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)’s
-methodology described
+The `calculate_*` functions are based on the OxCGRT’s methodology
+described
 [here](https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md).
 There are two sets of calculate functions included in `oxcgrt`. The
-first calculates the
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-**sub-indices** and the second calculates the four
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-**indices** which are composed of various combinations of the indicators
-used by
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-sub-indices and indices.
+first calculates the OxCGRT **sub-indices** and the second calculates
+the four OxCGRT **indices** which are composed of various combinations
+of the indicators used by OxCGRT sub-indices and indices.
 
-For more detailed examples of how to calculate the various
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
+For more detailed examples of how to calculate the various OxCGRT
 sub-indices and indices, read [Calculate OxCGRT sub-indices and
 indices](https://oxford-ihtm.io/oxcgrt/articles/calculate.html).
 
 ### Datasets
 
 The `oxcgrt` package comes with helpful datasets which serve as guides
-to facilitate in usage and interpretation of the
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-data.
+to facilitate in usage and interpretation of the OxCGRT data.
 
 #### Codebook
 
-The
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-provides an authoritative codebook found
+The OxCGRT provides an authoritative codebook found
 [here](https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/codebook.md).
 The `oxcgrt` package has extracted the tables from this documentation
 into a single codebook that can serve as a handy and convenient
-reference for an [R](https://cran.r-project.org) user when working with
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-data in [R](https://cran.r-project.org). The
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
+reference for an R user when working with OxCGRT data in R. The OxCGRT
 codebook can be accessed as follows:
 
 ``` r
@@ -315,18 +301,14 @@ below:
     #> 10 C5    C5_Flag                   ""          Binary fla… 0 - t… Containment a…
     #> # ℹ 37 more rows
 
-The current `oxcgrt` package version includes the
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-**codebook version 3.7** released on 11 March 2022.
+The current `oxcgrt` package version includes the OxCGRT **codebook
+version 3.7** released on 11 March 2022.
 
 #### Example OxCGRT indicators dataset
 
-In the
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-methodology
-[document](https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/index_methodology.md),
-an example indicator dataset is used to demonstrate the calculation of
-per indicator sub-indices and the four main indices that
+In the OxCGRT methodology document, an example indicator dataset is used
+to demonstrate the calculation of per indicator sub-indices and the four
+main indices that
 [OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
 provides. This example dataset has been made available in table format
 in the `oxcgrt` package and can be accessed as follows:
@@ -360,77 +342,63 @@ shown below:
 
 This dataset is used by the `oxcgrt` package to test the `calculate_*`
 functions and for demonstrating how these functions work. This dataset
-can be useful for those trying to learn the
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)’s
-calculation methods and [R](https://cran.r-project.org) users who are
-learning how to use the `oxcgrt` package `calculate_*` functions.
+can be useful for those trying to learn the OxCGRT’s calculation methods
+and [R](https://cran.r-project.org) users who are learning how to use
+the `oxcgrt` package `calculate_*` functions.
 
 ## Limitations
 
 The current version of `oxcgrt` package is *experimental* in that its
-stability and future development would depend on the
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)‘s
-current and future development. The
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-is in continuous evolution given that the COVID-19 pandemic is still
-on-going and various governments’ responses to it are continuously
-changed and/or updated. The
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-has also been developing other indices that capture other aspects of
+stability and future development would depend on the OxCGRT’s current
+and future development. The OxCGRT is in continuous evolution given that
+the COVID-19 pandemic is still on-going and various governments’
+responses to it are continuously changed and/or updated. The OxCGRT has
+also been developing other indices that capture other aspects of
 governments’ responses not yet covered by current indices.
 
 The `oxcgrt` package author and maintainer commit to ensuring that
 current functions are maintained and/or updated in a manner that ensures
 backwards compatibility should changes to the data structure and/or to
-the indices calculation are implemented by the
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-team. This would include maintaining the arguments used by the current
-functions, maintaining the functionality of the current functions, and
-maintaining the type of outputs of the current functions. Should changes
-implemented by the
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-team to the data structure and/or to the indices calculation require the
-breaking of the syntax, functionality and/or outputs of the current
-functions, a formal and proper deprecation process will be implemented
-that include proper and detailed documentation of the changes and the
-potential impact on current users.
+the indices calculation are implemented by the OxCGRT team. This would
+include maintaining the arguments used by the current functions,
+maintaining the functionality of the current functions, and maintaining
+the type of outputs of the current functions. Should changes implemented
+by the OxCGRT team to the data structure and/or to the indices
+calculation require the breaking of the syntax, functionality and/or
+outputs of the current functions, a formal and proper deprecation
+process will be implemented that include proper and detailed
+documentation of the changes and the potential impact on current users.
 
 ## Disclaimer
 
 The `oxcgrt` package is an independent development and is separate from
-and not recognised and approved by the
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-team. The author and maintainer of the package is not affiliated with
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-but is committed to ensure fidelity to the methods and usage specified
-by
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-and accuracy of outputs described and required by
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker).
+and not recognised and approved by the OxCGRT team. The author and
+maintainer of the package is not affiliated with OxCGRT but is committed
+to ensure fidelity to the methods and usage specified by OxCGRT and
+accuracy of outputs described and required by OxCGRT.
 
 Any mistakes, problems and issues with the functionality and outputs of
 the `oxcgrt` including mistakes in interpretation of the calculation of
 the sub-indices and indices noted (if any) are that of the author and
-maintainer and not of the
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker).
-Hence any problems and issues to the usage, functionality and outputs of
-the `oxcgrt` package should be addressed directly to the author and
-maintainer [here](https://github.com/OxfordIHTM/oxcgrt/issues).
+maintainer and not of the OxCGRT. Hence any problems and issues to the
+usage, functionality and outputs of the `oxcgrt` package should be
+addressed directly to the author and maintainer
+[here](https://github.com/OxfordIHTM/oxcgrt/issues).
 
 ## Citation
 
 When using the `oxcgrt` package, please cite both the source of the
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-data and `oxcgrt` package itself.
+OxCGRT data and `oxcgrt` package itself.
 
-For the source of the
-[OxCGRT](https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker)
-data, the following citation is recommended:
+For the source of the OxCGRT data, the following citation is
+recommended:
 
-*Hale, Thomas, Noam Angrist, Emily Cameron-Blake, Laura Hallas, Beatriz
-Kira, Saptarshi Majumdar, Anna Petherick, Toby Phillips, Helen Tatlow,
-Samuel Webster (2020). Oxford COVID-19 Government Response Tracker,
-Blavatnik School of Government.*
+> Thomas Hale, Noam Angrist, Rafael Goldszmidt, Beatriz Kira, Anna
+> Petherick, Toby Phillips, Samuel Webster, Emily Cameron-Blake, Laura
+> Hallas, Saptarshi Majumdar, and Helen Tatlow. (2021). “A global panel
+> database of pandemic policies (Oxford COVID-19 Government Response
+> Tracker).” Nature Human Behaviour.
+> <https://doi.org/10.1038/s41562-021-01079-8>
 
 For the `oxcgrt` package, the suggested citation can be obtained using a
 call to the `citation` function as follows:

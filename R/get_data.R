@@ -176,8 +176,8 @@ get_data_time <- function(json) {
 #'   specified country/countries and specified date/dates.
 #'
 #' @examples
-#' ## Get relevant JSON for Afghanistan on 16 July 2020
-#' x <- get_json_actions(ccode = "AFG", from = NULL, to = "2020-07-16")
+#' ## Get relevant JSON for Afghanistan on 01 January 2022
+#' x <- get_json_actions(ccode = "AFG", from = NULL, to = "2022-01-01")
 #'
 #' ## Get data on policy actions
 #' get_data_action(x)
